@@ -10,7 +10,7 @@ if (javaScript === "ECMAScript") {
 }
 
 // Используя конструкцию if..else, напишите код, который получает число через prompt, а затем выводит в alert:
-let a = prompt("получаешь число", "");
+let a = prompt("you get a number", "");
 
 if (a > 0) {
   console.log(1);
