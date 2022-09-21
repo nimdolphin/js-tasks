@@ -139,3 +139,46 @@ function showCircle(b) {
   }
 }
 showCircle();
+
+// ARGUMENTS
+
+// Задача 1. Напишите функцию, которая принимает произвольное
+//  количество аргументов в виде строк и выводит их через пробел
+//  с помощью document.write() в тело html-документа. Например,
+//  функция  showWords("I've", "been", "learning", "JavaScript",
+//   "for", "a", "month") должна вывести фразу "I've been learning
+//    JavaScript for a month".
+
+function showWords() {
+  console.log(arguments);
+  let sum = 0;
+  str = "";
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+    str += arguments[i] + " ";
+  }
+  str = str.slice(0, -1);
+  return str;
+}
+
+document.write(
+  showWords("I have", "been", "learning", "JavaScript", "for", "a", "month")
+);
+
+// Задача 2. Напишите функцию, которая принимает произвольное количество аргументов
+//  в виде однозначных чисел и возвращает 1 многозначное число. Например, функция
+//   с именем complexDigit() при вызове  complexDigit(3,6,7) вернет число 367,
+//   а complexDigit(1,9, 4, 8,3) вернет число 19483.
+
+function complexDigit() {
+  console.log(arguments);
+  let sum = 0;
+  str = "";
+  for (let i = 0; i < arguments.length; i++) {
+    sum += arguments[i];
+    str += arguments[i] + "";
+  }
+  str = str.slice(0, 3);
+  return str;
+}
+console.log(complexDigit(3, 6, 7));
