@@ -19,7 +19,6 @@ const result = multiplyNumberic(menu);
 
 console.log(result);
 
-// THIS TASKS
 // Создайте калькулятор
 // важность: 5
 // Создайте объект calculator (калькулятор) с тремя методами:
