@@ -129,24 +129,24 @@ kettle.clean();
 // sum() возвращает сумму этих свойств.
 // mul() возвращает произведение этих свойств.
 
-// function Calculator() {
-//   (this.read = function () {
-//     this.a = +prompt("number one", "");
-//     this.b = +prompt("number two", "");
-//   }),
-//     (this.sum = function () {
-//       return this.a + this.b;
-//     }),
-//     (this.mul = function () {
-//       return this.a * this.b;
-//     });
-// }
+function Calculator() {
+  this.read = function () {
+    this.a = +prompt("number one", "");
+    this.b = +prompt("number two", "");
+  };
+  this.sum = function () {
+    return this.a + this.b;
+  };
+  this.mul = function () {
+    return this.a * this.b;
+  };
+}
 
-// let calculator = new Calculator();
-// calculator.read();
+let calculator2 = new Calculator();
+calculator2.read();
 
-// console.log(calculator.sum());
-// console.log(calculator.mul());
+console.log(calculator2.sum());
+console.log(calculator2.mul());
 
 // Создайте функцию-конструктор Accumulator(startingValue).
 // Объект, который она создаёт, должен уметь следующее:
