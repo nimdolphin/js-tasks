@@ -7,7 +7,7 @@ function pow(x, n) {
   if (Number.isInteger(n) && n >= 1) {
     console.log(x ** n);
   } else {
-    console.log(undefined);
+    return;
   }
 }
 pow(x, n);
@@ -35,19 +35,17 @@ function getNumb(a, b) {
     return 1;
   } else if (a < b) {
     return -1;
-  } else if (a === b) {
-    return 0;
   }
 }
 
 // // с помощью тернарного оператора
 function getNumb2(a, b) {
-  return a > b ? 1 : a < b ? -1 : a === b ? 0 : undefined;
+  return a > b ? 1 : a < b ? -1 : a === b;
 }
 
 // // в виде стрелочной функции
 let getNumb3 = (a, b) => {
-  return a > b ? 1 : a < b ? -1 : a === b ? 0 : undefined;
+  return a > b ? 1 : a < b ? -1 : a === b;
 };
 
 // Задача 2  Напишите функцию, которая принимает 2 параметра:
@@ -77,12 +75,18 @@ console.log(result2);
 //   Если одно из чисел чётное, а второе нечётное - функция возвращает
 //    это нечётное число.
 
+const evenI = !(i % 2);
+const evenJ = !(j % 2);
+
+const oddI = !!(i % 2);
+const oddJ = !!(j % 2);
+
 function getN(i, j) {
-  if (i % 2 === 0 && j % 2 === 0) {
+  if (evenI && evenJ) {
     return i * j;
-  } else if (i % 2 === 1 && j % 2 === 1) {
+  } else if (oddI && oddJ) {
     return i + j;
-  } else if (i % 2 === 0 || j % 2 === 1) {
+  } else if (evenI || oddJ) {
     return j;
   } else {
     return i;
@@ -119,10 +123,10 @@ if (checkAge(age)) {
 function showArg(a, b, c) {
   if (!!a) {
     return b + c;
-  } else if (!a) {
-    return b - c;
   }
+  return b - c;
 }
+
 let result3 = showArg(8, 4, 2);
 console.log(result3);
 
