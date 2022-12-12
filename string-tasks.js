@@ -103,10 +103,7 @@ pasteDashesIntoString(str4);
 // 5. Напишите функцию makeStringLowerCased(str), которая
 // принимает строку str в качестве аргумента и переводит в нижний регистр.
 
-function makeStringLowerCased(str5) {
-  let newStr = str5.toLowerCase();
-  return newStr;
-}
+const makeStringLowerCased = (str5) => str5.toLowerCase();
 
 makeStringLowerCased("I LOVE PIZZA");
 
@@ -146,7 +143,11 @@ function changeLetter(str7) {
     let bigLetter = newStr.toUpperCase();
     let smallLetter = newStr.toLowerCase();
 
-    let newS2 = newS === smallLetter ? bigLetter : smallLetter;
+    let newS2 = smallLetter;
+
+    if (newS === smallLetter) {
+      newS2 = bigLetter;
+    }
 
     newS += newS2;
   }
@@ -167,8 +168,10 @@ function changeLetterRegister(str5) {
 
   for (i = 0; i < str5.length; i++) {
     let strN = !(i % 2) ? str5[i].toLowerCase() : str5[i].toUpperCase();
+
     strNew5 += strN;
   }
+
   return strNew5;
 }
 
@@ -241,9 +244,7 @@ function getSubstring(str, char, pos) {
   let newStr = str.split(" ");
   let idx = newStr.indexOf(char);
 
-  let newString = pos
-    ? newStr.slice(0, idx).join(" ")
-    : newStr.slice(0, idx).join(" ");
+  let newString = pos ? newStr.slice(0, idx).join(" ") : str;
 
   return newString;
 }
