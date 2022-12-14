@@ -4,19 +4,15 @@
 
 const arr = [2, 6, 8, 44, 7, 55, 77, 890];
 
-function sortNum() {
-  const newArr = arr.sort((a, b) => a - b);
-  return newArr;
-}
+const sortNum = () => arr.sort((a, b) => a - b);
+
 sortNum();
 
 const arr1 = [2, 6, 8, 44, 7, 55, 77, 890];
 
-function sortNum() {
-  const newArr = arr1.sort((a, b) => b - a);
-  return newArr;
-}
-sortNum();
+const sortNum1 = () => arr1.sort((a, b) => b - a);
+
+sortNum1();
 
 // 0. С помощью цикла for сформируйте строку '123456789' и запишите
 // ее в переменную str.
@@ -71,7 +67,7 @@ for (i = 1; i <= 9; i++) {
 let str3 = "";
 
 for (i = 2; i <= 10; i++) {
-  if (i % 2 === 1) continue;
+  if (i % 2) continue;
 
   str3 += "xx";
   console.log(str3);
@@ -182,9 +178,7 @@ console.log(arr10);
 
 const str1 = "1, 2, 3, 4, 5, 6";
 
-const newStr = str1.split(", ");
-newStr.reverse();
-const newStr2 = newStr.join(", ");
+const newStr = str.split(", ").reverse().join(", ");
 
 console.log(newStr2);
 
@@ -227,11 +221,8 @@ console.log(array2);
 
 function isPrime(num) {
   for (let i = 2; i <= num; i++) {
-    if (!(num % i)) {
-      return false;
-    }
+    return !(num % i);
   }
-  return true;
 }
 
 isPrime(31);
@@ -273,8 +264,14 @@ addArray();
 const arr14 = [1, 2, 4, 6, 8, 10, 101, 4];
 
 function findMaxNum() {
-  const sortNum = arr14.sort((a, b) => a - b);
-  return sortNum.at(-1);
+  let max = arr[0];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (max < arr[i]) {
+      max = arr[i];
+    }
+  }
+  return max;
 }
 
 findMaxNum();
@@ -284,9 +281,14 @@ findMaxNum();
 const arr15 = [56, 2, 4, 6, 8, 10, 101, 4];
 
 function findMinNum() {
-  const findMin = arr15.sort((a, b) => a - b);
+  let min = arr[0];
 
-  return findMin[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (min > arr[i]) {
+      min = arr[i];
+    }
+  }
+  return min;
 }
 
 findMinNum();
@@ -294,14 +296,9 @@ findMinNum();
 // 24. Дан массив чисел, найдите среднее арифметическое всех чисел
 
 let arr16 = [2, 5, 7, 44, 67, 87, 1, 3];
-let sum = 0;
 
-function findArithmeticNum() {
-  for (i = 0; i < arr16.length; i++) {
-    sum += arr16[i];
-  }
-  return sum / arr16.length;
-}
+const findArithmeticNum = () =>
+  arr.reduce((value, sum) => value + sum, 0) / arr.length;
 
 findArithmeticNum();
 
@@ -316,9 +313,7 @@ findArithmeticNum();
 //   * @param {?} value - значение для массива
 //   * @returns {Array}
 
-const fill = (arraySize, value) => {
-  return new Array(arraySize).fill(value);
-};
+const fill = (arraySize, value) => value.repeat(arraySize).split("");
 
 const data = 3;
 const valueToFill = "a";
@@ -357,10 +352,7 @@ console.log(reverse(data2)); // [3, 2, 1]
 //   * @param {Array} array - Массив любых элементов
 //   * @returns {Array}
 
-const compact = (array) => {
-  const newArr = array.filter(Boolean);
-  return newArr;
-};
+const compact = (array) => array.filter(Boolean);
 
 const data3 = [0, 1, false, 2, undefined, "", 3, null];
 console.log(compact(data3)); // [1, 2, 3]
@@ -377,15 +369,11 @@ console.log(compact(data3)); // [1, 2, 3]
 //   * @param {Array} array - массив, значения которого массивы пар
 //   * @returns {Array}
 
-const fromPairs = (array) => {
-  const obj = array.reduce((accum, item) => {
-    return {
-      ...accum,
-      [item[0]]: item[1],
-    };
+const fromPairs = (array) =>
+  array.reduce((accum, item) => {
+    return { ...accum, [item[0]]: item[1] };
   }, {});
-  return obj;
-};
+
 const data4 = [
   ["a", 1],
   ["b", 2],
@@ -432,6 +420,17 @@ const unique = (array) => {
 
 const data6 = [1, 2, 1, 2, 3];
 console.log(unique(data6)); // [1, 2, 3]
+
+// 2 вариант
+
+const unique1 = (array) => {
+  const uniq = new Set(array);
+
+  return [...uniq];
+};
+
+const dataa = [1, 2, 1, 2, 3];
+console.log(unique(dataa)); // [1, 2, 3]
 
 // 31. IsEqual. Напишите функцию, которая сравнивает два массива и
 // возвращает true, если они идентичны.
@@ -535,10 +534,8 @@ console.log(getSum(arr21));
 //  будет принимать число и возвращать true, если число положительное,
 //  и false - если отрицательное.
 
-function isPositive(arr22) {
-  const newArr = arr22.filter((item) => item > -1);
-  return newArr;
-}
+const isPositive = (arr1) => arr1.filter((item) => item > -1);
+
 const arr22 = [1, 3, -5, 7, -9, 99];
 isPositive(arr22);
 
@@ -577,11 +574,7 @@ function getSum(num) {
     sum += str[i];
   }
 
-  if (sum > 9) {
-    return getSum(sum);
-  } else {
-    return sum;
-  }
+  return sum > 9 ? getSum(sum) : sum;
 }
 
 getSum(num);
@@ -614,46 +607,6 @@ soort();
 // отсортировать по возрастанию(1) и по убыванию(2) написав
 //  алгоритм сортировки пузырьком.
 
-// const arr = [5, 12, 2, 7, 6, 9, 19, 25, 4, 1, 3];
-
-// function bubbleSort() {
-//   for (let i = 0; i < arr.length; i++) {
-//     for (let j = 0; j < arr.length; j++) {
-//       // console.log(arr[i], arr[j]);
-//       let num = arr[j];
-//       if (arr[j] > arr[j + 1]) {
-//         arr[j] = arr[j + 1];
-//         arr[j + 1] = num;
-//       }
-//     }
-
-//     // console.log(arr[i]);
-//   }
-//   return arr;
-// }
-
-// console.log(bubbleSort());
-
-// const arr26 = [5, 12, 2, 7, 6, 9, 19, 25, 4, 1, 3];
-
-// function bubbleSort() {
-//   for (let i = 0; i < arr26.length; i++) {
-//     for (let j = 0; j < arr26.length; j++) {
-//       // console.log(arr[i], arr[j]);
-//       let num = arr26[j];
-//       if (arr26[j] < arr26[j + 1]) {
-//         arr[j] = arr[j + 1];
-//         arr[j + 1] = num;
-//       }
-//     }
-
-//     // console.log(arr[i]);
-//   }
-//   return arr;
-// }
-
-// console.log(bubbleSort());
-
 const arr26 = [5, 12, 2, 7, 6, 9, 19, 25, 4, 1, 3];
 
 function bubbleSort() {
@@ -667,14 +620,16 @@ function bubbleSort() {
   return arr26;
 }
 
-console.log(bubbleSort());
+bubbleSort();
+
+// по убыванию
 
 const arr27 = [5, 12, 2, 7, 6, 9, 19, 25, 4, 1, 3];
 
 function bubbleSort() {
   for (let i = 0; i < arr27.length; i++) {
     for (let j = 0; j < arr27.length; j++) {
-      if (arr27[j] > arr27[j + 1]) {
+      if (arr27[j] < arr27[j + 1]) {
         [arr27[j], arr27[j + 1]] = [arr27[j + 1], arr27[j]];
       }
     }
@@ -682,7 +637,7 @@ function bubbleSort() {
   return arr27;
 }
 
-console.log(bubbleSort());
+bubbleSort();
 
 // 3) бинарный поиск
 
@@ -695,17 +650,14 @@ function BinarSort(sortArr, key) {
   while (start <= end) {
     let middle = Math.floor((start + end) / 2);
     let middleNum = arr[middle];
-    console.log(middleNum);
 
     if (key === middleNum) {
       return middleNum;
     } else if (middleNum < key) {
       start = middle + 1;
-    } else {
-      end = middle - 1;
     }
   }
   return -1;
 }
 
-console.log(BinarSort(sortArr, 37));
+BinarSort(sortArr, 37);
