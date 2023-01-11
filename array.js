@@ -654,10 +654,12 @@ function BinarySearch(sortArr, key) {
     let middle = Math.floor((start + end) / 2);
     let middleNum = sortArr[middle];
 
-    if (key === middleNum) {
-      return middleNum;
-    } else if (middleNum < key) {
+    if (middleNum < key) {
       start = middle + 1;
+    } else if (middleNum > key) {
+      end = middle - 1;
+    } else if (key === middleNum) {
+      return middleNum;
     }
   }
   return -1;
