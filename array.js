@@ -4,15 +4,15 @@
 
 const arr = [2, 6, 8, 44, 7, 55, 77, 890];
 
-const sortNum = () => arr.sort((a, b) => a - b);
+arr.sort((a, b) => a - b);
 
-sortNum();
+console.log(arr);
 
 const arr1 = [2, 6, 8, 44, 7, 55, 77, 890];
 
-const sortNum1 = () => arr1.sort((a, b) => b - a);
+arr1.sort((a, b) => b - a);
 
-sortNum1();
+console.log(arr1);
 
 // 0. С помощью цикла for сформируйте строку '123456789' и запишите
 // ее в переменную str.
@@ -444,11 +444,14 @@ console.log(unique(dataa)); // [1, 2, 3]
 //   * @returns {boolean}
 
 const isEqual = (firstArray, secondArray) => {
-  return (
+  if (
     Array.isArray(firstArray) === Array.isArray(secondArray) &&
-    firstArray.length === secondArray.length &&
-    firstArray.every((item, id) => item === secondArray[id])
-  );
+    firstArray.length === secondArray.length
+  ) {
+    return firstArray.every((item, id) => item === secondArray[id]);
+  } else {
+    return false;
+  }
 };
 
 const arr17 = [1, 2, 3, 4];
@@ -503,8 +506,8 @@ const chunk = (array, size) => {
   while (newS.length > 0) {
     const chunk = newS.splice(0, size);
     newArr.push(chunk);
-    return newArr;
   }
+  return newArr;
 };
 
 const data8 = [1, 2, 3, 4, 5, 6, 7];
@@ -534,7 +537,7 @@ console.log(getSum(arr21));
 //  будет принимать число и возвращать true, если число положительное,
 //  и false - если отрицательное.
 
-const isPositive = (arr1) => arr1.filter((item) => item > -1);
+const isPositive = (arr1) => arr1.filter((item) => item >= 0);
 
 const arr22 = [1, 3, -5, 7, -9, 99];
 isPositive(arr22);
@@ -548,10 +551,10 @@ const arr23 = [1, 5, 7, 8, 9, 10];
 
 let i = 0;
 
-function getArr(arr23) {
-  i++;
-  if (i < arr23.length) {
-    getArr(arr23);
+function getArr(array) {
+  if (array.length > 0) {
+    array.shift();
+    return getArr(array);
   }
 }
 
@@ -643,13 +646,13 @@ bubbleSort();
 
 const sortArr = [3, 4, 7, 8, 10, 13, 17, 19, 25, 37, 58, 60];
 
-function BinarSort(sortArr, key) {
+function BinarySearch(sortArr, key) {
   let start = 0;
   let end = sortArr.length - 1;
 
   while (start <= end) {
     let middle = Math.floor((start + end) / 2);
-    let middleNum = arr[middle];
+    let middleNum = sortArr[middle];
 
     if (key === middleNum) {
       return middleNum;
@@ -660,4 +663,4 @@ function BinarSort(sortArr, key) {
   return -1;
 }
 
-BinarSort(sortArr, 37);
+BinarySearch(sortArr, 37);
