@@ -85,8 +85,7 @@ console.log(result); // ['I', 'am', 'learning', 'frontend', 'development']
 
 const str3 = "hey, buddy";
 
-const removeSymbols = (str3, length) =>
-  !!str3 || !length ? str3.slice(0, length) : str3;
+const removeSymbols = (str3, length) => str3.slice(0, length);
 
 removeSymbols(str3, 4);
 
@@ -202,10 +201,7 @@ compareStrings("JavaScript", "JavaScriptonite");
 // 12. Напишите функцию repeatStr(str, n), которая возвращает строку
 //  повторяемую определённое количество раз.
 
-function repeatStr(str, n) {
-  let str2 = str.repeat(n);
-  return str2;
-}
+const repeatStr = (str, n) => str.repeat(n);
 
 repeatStr("hello", 5);
 
