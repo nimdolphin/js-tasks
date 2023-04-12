@@ -232,16 +232,9 @@ isPrime(31);
 
 const arr12 = [1, 2, 5, 6, 7, 7, 8, 9, 99, 45];
 
-function findTheSame() {
-  for (i = 0; i < arr12.length; i++) {
-    if (arr12[i] === arr12[i - 1]) {
-      return "yes";
-    }
-  }
-  return "no";
+for (i = 0; i < arr12.length; i++) {
+  arr12[i] === arr12[i - 1] ? console.log("yes") : console.log("no");
 }
-
-findTheSame();
 
 // 21. Заполните массив следующим образом: в первый элемент запишите
 //  '1', во второй '22', в третий '333' и так далее (два цикла)
@@ -423,14 +416,10 @@ console.log(unique(data6)); // [1, 2, 3]
 
 // 2 вариант
 
-const unique1 = (array) => {
-  const uniq = new Set(array);
-
-  return [...uniq];
-};
+const unique1 = (array) => [...new Set(array)];
 
 const dataa = [1, 2, 1, 2, 3];
-console.log(unique(dataa)); // [1, 2, 3]
+console.log(unique1(dataa)); // [1, 2, 3]
 
 // 31. IsEqual. Напишите функцию, которая сравнивает два массива и
 // возвращает true, если они идентичны.
